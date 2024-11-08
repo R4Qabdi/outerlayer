@@ -1,0 +1,324 @@
+[gd_scene load_steps=8 format=3 uid="uid://igsne8eech41"]
+
+[ext_resource type="Script" path="res://scenes/menu/settings.gd" id="1_pvbce"]
+[ext_resource type="Texture2D" uid="uid://cbeupm8oh887s" path="res://assets/main/UI/muteicon.png" id="1_tlefu"]
+[ext_resource type="PackedScene" uid="uid://81lcug0emgwk" path="res://scenes/menu/mobile.tscn" id="2_qe4s5"]
+[ext_resource type="Texture2D" uid="uid://bbko8nk2w3wld" path="res://assets/main/UI/muteiconpress.png" id="2_r6wa3"]
+[ext_resource type="Theme" uid="uid://wq76alqodf5n" path="res://assets/UI/main theme.tres" id="3_n0o80"]
+[ext_resource type="Texture2D" uid="uid://baugkk1coowq8" path="res://assets/main/UI/muteiconhover.png" id="3_rjt4g"]
+[ext_resource type="Texture2D" uid="uid://i2v8tj1822v3" path="res://assets/main/UI/muteiconfocused.png" id="4_eoekx"]
+
+[node name="settings" type="CanvasLayer"]
+script = ExtResource("1_pvbce")
+
+[node name="mobile" parent="." instance=ExtResource("2_qe4s5")]
+
+[node name="settings" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("3_n0o80")
+metadata/_edit_lock_ = true
+
+[node name="optionbar" type="TabContainer" parent="settings"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 1.0
+anchor_top = 0.469
+anchor_right = 1.0
+anchor_bottom = 0.469
+offset_left = -1024.0
+offset_top = -209.68
+offset_right = -256.0
+offset_bottom = 174.32
+grow_horizontal = 0
+tab_alignment = 1
+current_tab = 3
+metadata/_edit_lock_ = true
+
+[node name="GAME" type="TabBar" parent="settings/optionbar"]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 0
+
+[node name="return" type="Button" parent="settings/optionbar/GAME"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -96.0
+offset_top = 63.232
+offset_right = 96.0
+offset_bottom = 95.232
+text = "Return"
+
+[node name="save" type="Button" parent="settings/optionbar/GAME"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -96.0
+offset_top = 111.464
+offset_right = 96.0
+offset_bottom = 143.464
+disabled = true
+toggle_mode = true
+text = "Save"
+
+[node name="load" type="Button" parent="settings/optionbar/GAME"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -96.0
+offset_top = 159.464
+offset_right = 96.0
+offset_bottom = 191.464
+disabled = true
+toggle_mode = true
+text = "Load"
+
+[node name="exitmain" type="Button" parent="settings/optionbar/GAME"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -96.0
+offset_top = 207.464
+offset_right = 96.0
+offset_bottom = 239.464
+text = "Exit to main menu"
+
+[node name="exit" type="Button" parent="settings/optionbar/GAME"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -96.0
+offset_top = 255.464
+offset_right = 96.0
+offset_bottom = 287.464
+text = "Exit to desktop"
+
+[node name="GRAPHICS" type="TabBar" parent="settings/optionbar"]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 1
+
+[node name="fullscreen" type="CheckButton" parent="settings/optionbar/GRAPHICS"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -128.0
+offset_top = 33.0
+offset_right = 128.0
+offset_bottom = 65.0
+grow_horizontal = 2
+text = "Full screen mode"
+
+[node name="resolution" type="OptionButton" parent="settings/optionbar/GRAPHICS"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.003
+anchor_right = 0.5
+anchor_bottom = 0.003
+offset_left = -128.0
+offset_top = 127.941
+offset_right = 128.0
+offset_bottom = 159.941
+selected = 1
+item_count = 3
+popup/item_0/text = "480x640"
+popup/item_0/id = 0
+popup/item_1/text = "720 x 1280"
+popup/item_1/id = 1
+popup/item_2/text = "1080 x 1920"
+popup/item_2/id = 2
+
+[node name="Label" type="Label" parent="settings/optionbar/GRAPHICS/resolution"]
+layout_mode = 0
+offset_top = -32.0
+offset_right = 256.0
+text = "Display Resolution"
+
+[node name="viewport" type="OptionButton" parent="settings/optionbar/GRAPHICS"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.003
+anchor_right = 0.5
+anchor_bottom = 0.003
+offset_left = -128.0
+offset_top = 223.941
+offset_right = 128.0
+offset_bottom = 255.941
+selected = 1
+item_count = 3
+popup/item_0/text = "480x640"
+popup/item_0/id = 0
+popup/item_0/disabled = true
+popup/item_1/text = "720 x 1280"
+popup/item_1/id = 1
+popup/item_2/text = "1080 x 1920"
+popup/item_2/id = 2
+
+[node name="Label" type="Label" parent="settings/optionbar/GRAPHICS/viewport"]
+layout_mode = 0
+offset_top = -32.0
+offset_right = 256.0
+text = "Content scale"
+
+[node name="VOLUME" type="TabBar" parent="settings/optionbar"]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 2
+metadata/_edit_lock_ = true
+
+[node name="Mastervolume" type="HSlider" parent="settings/optionbar/VOLUME"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.003
+anchor_right = 0.5
+anchor_bottom = 0.003
+offset_left = -96.0
+offset_top = 47.941
+offset_right = 80.0
+offset_bottom = 79.941
+
+[node name="mutemaster" type="TextureButton" parent="settings/optionbar/VOLUME/Mastervolume"]
+layout_mode = 0
+offset_left = -32.0
+offset_bottom = 32.0
+toggle_mode = true
+texture_normal = ExtResource("1_tlefu")
+texture_pressed = ExtResource("2_r6wa3")
+texture_hover = ExtResource("3_rjt4g")
+texture_focused = ExtResource("4_eoekx")
+
+[node name="Label" type="Label" parent="settings/optionbar/VOLUME/Mastervolume"]
+layout_mode = 0
+offset_left = -32.0
+offset_top = -32.0
+offset_right = 84.0
+text = "Master volume"
+vertical_alignment = 1
+
+[node name="Musicvolume" type="HSlider" parent="settings/optionbar/VOLUME"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -96.0
+offset_top = 129.0
+offset_right = 80.0
+offset_bottom = 161.0
+grow_horizontal = 2
+
+[node name="mutemusic" type="TextureButton" parent="settings/optionbar/VOLUME/Musicvolume"]
+layout_mode = 0
+offset_left = -32.0
+offset_bottom = 32.0
+toggle_mode = true
+texture_normal = ExtResource("1_tlefu")
+texture_pressed = ExtResource("2_r6wa3")
+texture_hover = ExtResource("3_rjt4g")
+texture_focused = ExtResource("4_eoekx")
+
+[node name="Label" type="Label" parent="settings/optionbar/VOLUME/Musicvolume"]
+layout_mode = 0
+offset_left = -32.0
+offset_top = -32.0
+offset_right = 84.0
+text = "Music volume"
+vertical_alignment = 1
+
+[node name="SFXvolume" type="HSlider" parent="settings/optionbar/VOLUME"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -96.0
+offset_top = 209.0
+offset_right = 80.0
+offset_bottom = 241.0
+grow_horizontal = 2
+
+[node name="mutesfx" type="TextureButton" parent="settings/optionbar/VOLUME/SFXvolume"]
+layout_mode = 0
+offset_left = -32.0
+offset_bottom = 32.0
+toggle_mode = true
+texture_normal = ExtResource("1_tlefu")
+texture_pressed = ExtResource("2_r6wa3")
+texture_hover = ExtResource("3_rjt4g")
+texture_focused = ExtResource("4_eoekx")
+
+[node name="Label" type="Label" parent="settings/optionbar/VOLUME/SFXvolume"]
+layout_mode = 0
+offset_left = -32.0
+offset_top = -32.0
+offset_right = 84.0
+text = "SFX volume"
+vertical_alignment = 1
+
+[node name="CONTROL" type="TabBar" parent="settings/optionbar"]
+layout_mode = 2
+metadata/_tab_index = 3
+
+[node name="device" type="OptionButton" parent="settings/optionbar/CONTROL"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -128.0
+offset_top = 97.0
+offset_right = 126.0
+offset_bottom = 127.0
+grow_horizontal = 2
+selected = 0
+item_count = 2
+popup/item_0/text = "mobile"
+popup/item_0/id = 0
+popup/item_1/text = "desktop"
+popup/item_1/id = 1
+
+[node name="Label" type="Label" parent="settings/optionbar/CONTROL/device"]
+layout_mode = 0
+offset_left = -2.0
+offset_top = -34.0
+offset_right = 38.0
+offset_bottom = -2.0
+text = "Recommended device settings"
+vertical_alignment = 1
+
+[node name="menubutton" type="Button" parent="."]
+offset_left = 1184.0
+offset_top = 32.0
+offset_right = 1248.0
+offset_bottom = 96.0
+theme = ExtResource("3_n0o80")
+toggle_mode = true
+text = "Gear"
+
+[connection signal="pressed" from="settings/optionbar/GAME/return" to="." method="_on_return_pressed"]
+[connection signal="toggled" from="settings/optionbar/GAME/save" to="." method="_on_save_toggled"]
+[connection signal="toggled" from="settings/optionbar/GAME/load" to="." method="_on_load_toggled"]
+[connection signal="pressed" from="settings/optionbar/GAME/exitmain" to="." method="_on_exitmain_pressed"]
+[connection signal="pressed" from="settings/optionbar/GAME/exit" to="." method="_on_exit_pressed"]
+[connection signal="toggled" from="settings/optionbar/GRAPHICS/fullscreen" to="." method="_on_fullscreen_toggled"]
+[connection signal="item_selected" from="settings/optionbar/GRAPHICS/resolution" to="." method="_on_resolution_item_selected"]
+[connection signal="item_selected" from="settings/optionbar/GRAPHICS/viewport" to="." method="_on_viewport_item_selected"]
+[connection signal="value_changed" from="settings/optionbar/VOLUME/Mastervolume" to="." method="_on_mastervolume_value_changed"]
+[connection signal="toggled" from="settings/optionbar/VOLUME/Mastervolume/mutemaster" to="." method="_on_mutemaster_toggled"]
+[connection signal="value_changed" from="settings/optionbar/VOLUME/Musicvolume" to="." method="_on_musicvolume_value_changed"]
+[connection signal="toggled" from="settings/optionbar/VOLUME/Musicvolume/mutemusic" to="." method="_on_mutemusic_toggled"]
+[connection signal="value_changed" from="settings/optionbar/VOLUME/SFXvolume" to="." method="_on_sf_xvolume_value_changed"]
+[connection signal="toggled" from="settings/optionbar/VOLUME/SFXvolume/mutesfx" to="." method="_on_mutesfx_toggled"]
+[connection signal="item_selected" from="settings/optionbar/CONTROL/device" to="." method="_on_device_item_selected"]
+[connection signal="toggled" from="menubutton" to="." method="_on_menubutton_toggled"]

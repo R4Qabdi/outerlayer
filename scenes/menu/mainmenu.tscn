@@ -1,0 +1,337 @@
+[gd_scene load_steps=8 format=3 uid="uid://chau3mfadoddt"]
+
+[ext_resource type="Script" path="res://scenes/menu/mainmenu.gd" id="1_brx2j"]
+[ext_resource type="Texture2D" uid="uid://wctlof6kgw0t" path="res://assets/main/UI/main.png" id="1_l3xep"]
+[ext_resource type="Theme" uid="uid://wq76alqodf5n" path="res://assets/UI/main theme.tres" id="2_ng2nf"]
+[ext_resource type="Texture2D" uid="uid://cbeupm8oh887s" path="res://assets/main/UI/muteicon.png" id="4_rhsb0"]
+[ext_resource type="Texture2D" uid="uid://bbko8nk2w3wld" path="res://assets/main/UI/muteiconpress.png" id="5_ccmwj"]
+[ext_resource type="Texture2D" uid="uid://baugkk1coowq8" path="res://assets/main/UI/muteiconhover.png" id="6_a2x72"]
+[ext_resource type="Texture2D" uid="uid://i2v8tj1822v3" path="res://assets/main/UI/muteiconfocused.png" id="7_bjnfm"]
+
+[node name="Control" type="CanvasLayer"]
+script = ExtResource("1_brx2j")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme = ExtResource("2_ng2nf")
+metadata/_edit_lock_ = true
+
+[node name="ColorRect" type="ColorRect" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.617582, 0.651428, 0.746854, 1)
+metadata/_edit_lock_ = true
+
+[node name="TextureRect" type="TextureRect" parent="Control/ColorRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_l3xep")
+metadata/_edit_lock_ = true
+
+[node name="start" type="Button" parent="Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.198
+anchor_bottom = 0.198
+offset_left = 128.0
+offset_top = -0.304016
+offset_right = 384.0
+offset_bottom = 47.696
+theme = ExtResource("2_ng2nf")
+text = "START"
+
+[node name="option" type="Button" parent="Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.37
+anchor_bottom = 0.37
+offset_left = 128.0
+offset_top = 0.23999
+offset_right = 384.0
+offset_bottom = 48.24
+toggle_mode = true
+text = "OPTION"
+
+[node name="about" type="Button" parent="Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.543
+anchor_bottom = 0.543
+offset_left = 128.0
+offset_top = 0.135986
+offset_right = 384.0
+offset_bottom = 48.136
+toggle_mode = true
+text = "ABOUT"
+
+[node name="exit" type="Button" parent="Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.716
+anchor_bottom = 0.716
+offset_left = 128.0
+offset_top = 0.0319824
+offset_right = 384.0
+offset_bottom = 48.032
+text = "EXIT"
+
+[node name="TextureRect" type="TextureRect" parent="Control"]
+layout_mode = 0
+offset_left = 576.0
+offset_top = 128.0
+offset_right = 832.0
+offset_bottom = 192.0
+
+[node name="optionbar" type="TabContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 1.0
+anchor_top = 0.469
+anchor_right = 1.0
+anchor_bottom = 0.469
+offset_left = -640.0
+offset_top = -207.912
+offset_right = -128.0
+offset_bottom = 208.088
+grow_horizontal = 0
+tab_alignment = 1
+current_tab = 2
+
+[node name="GRAPHICS" type="TabBar" parent="Control/optionbar"]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 0
+
+[node name="fullscreen" type="CheckButton" parent="Control/optionbar/GRAPHICS"]
+layout_mode = 0
+offset_left = 128.0
+offset_top = 33.0
+offset_right = 384.0
+offset_bottom = 65.0
+text = "Full screen mode"
+
+[node name="resolution" type="OptionButton" parent="Control/optionbar/GRAPHICS"]
+layout_mode = 0
+offset_left = 128.0
+offset_top = 129.0
+offset_right = 384.0
+offset_bottom = 161.0
+selected = 1
+item_count = 3
+popup/item_0/text = "480x640"
+popup/item_0/id = 0
+popup/item_1/text = "720 x 1280"
+popup/item_1/id = 1
+popup/item_2/text = "1080 x 1920"
+popup/item_2/id = 2
+
+[node name="Label" type="Label" parent="Control/optionbar/GRAPHICS/resolution"]
+layout_mode = 0
+offset_top = -32.0
+offset_right = 256.0
+text = "Display Resolution"
+
+[node name="viewport" type="OptionButton" parent="Control/optionbar/GRAPHICS"]
+layout_mode = 0
+offset_left = 128.0
+offset_top = 225.0
+offset_right = 384.0
+offset_bottom = 257.0
+selected = 1
+item_count = 3
+popup/item_0/text = "480x640"
+popup/item_0/id = 0
+popup/item_0/disabled = true
+popup/item_1/text = "720 x 1280"
+popup/item_1/id = 1
+popup/item_2/text = "1080 x 1920"
+popup/item_2/id = 2
+
+[node name="Label" type="Label" parent="Control/optionbar/GRAPHICS/viewport"]
+layout_mode = 0
+offset_top = -32.0
+offset_right = 256.0
+text = "Content scale"
+
+[node name="VOLUME" type="TabBar" parent="Control/optionbar"]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 1
+
+[node name="Mastervolume" type="HSlider" parent="Control/optionbar/VOLUME"]
+layout_mode = 0
+offset_left = 160.0
+offset_top = 49.0
+offset_right = 336.0
+offset_bottom = 81.0
+
+[node name="mutemaster" type="TextureButton" parent="Control/optionbar/VOLUME/Mastervolume"]
+layout_mode = 0
+offset_left = -32.0
+offset_bottom = 32.0
+toggle_mode = true
+texture_normal = ExtResource("4_rhsb0")
+texture_pressed = ExtResource("5_ccmwj")
+texture_hover = ExtResource("6_a2x72")
+texture_focused = ExtResource("7_bjnfm")
+
+[node name="Label" type="Label" parent="Control/optionbar/VOLUME/Mastervolume"]
+layout_mode = 0
+offset_left = -32.0
+offset_top = -32.0
+offset_right = 84.0
+text = "Master volume"
+vertical_alignment = 1
+
+[node name="Musicvolume" type="HSlider" parent="Control/optionbar/VOLUME"]
+layout_mode = 0
+offset_left = 160.0
+offset_top = 129.0
+offset_right = 336.0
+offset_bottom = 161.0
+
+[node name="mutemusic" type="TextureButton" parent="Control/optionbar/VOLUME/Musicvolume"]
+layout_mode = 0
+offset_left = -32.0
+offset_bottom = 32.0
+toggle_mode = true
+texture_normal = ExtResource("4_rhsb0")
+texture_pressed = ExtResource("5_ccmwj")
+texture_hover = ExtResource("6_a2x72")
+texture_focused = ExtResource("7_bjnfm")
+
+[node name="Label" type="Label" parent="Control/optionbar/VOLUME/Musicvolume"]
+layout_mode = 0
+offset_left = -32.0
+offset_top = -32.0
+offset_right = 84.0
+text = "Music volume"
+vertical_alignment = 1
+
+[node name="SFXvolume" type="HSlider" parent="Control/optionbar/VOLUME"]
+layout_mode = 0
+offset_left = 160.0
+offset_top = 209.0
+offset_right = 336.0
+offset_bottom = 241.0
+
+[node name="mutesfx" type="TextureButton" parent="Control/optionbar/VOLUME/SFXvolume"]
+layout_mode = 0
+offset_left = -32.0
+offset_bottom = 32.0
+toggle_mode = true
+texture_normal = ExtResource("4_rhsb0")
+texture_pressed = ExtResource("5_ccmwj")
+texture_hover = ExtResource("6_a2x72")
+texture_focused = ExtResource("7_bjnfm")
+
+[node name="Label" type="Label" parent="Control/optionbar/VOLUME/SFXvolume"]
+layout_mode = 0
+offset_left = -32.0
+offset_top = -32.0
+offset_right = 84.0
+text = "SFX volume"
+vertical_alignment = 1
+
+[node name="CONTROL" type="TabBar" parent="Control/optionbar"]
+layout_mode = 2
+metadata/_tab_index = 2
+
+[node name="device" type="OptionButton" parent="Control/optionbar/CONTROL"]
+layout_mode = 0
+offset_left = 130.0
+offset_top = 97.0
+offset_right = 384.0
+offset_bottom = 127.0
+selected = 0
+item_count = 2
+popup/item_0/text = "mobile"
+popup/item_0/id = 0
+popup/item_1/text = "desktop"
+popup/item_1/id = 1
+
+[node name="Label" type="Label" parent="Control/optionbar/CONTROL/device"]
+layout_mode = 0
+offset_left = -2.0
+offset_top = -34.0
+offset_right = 38.0
+offset_bottom = -2.0
+text = "Recommended device settings"
+vertical_alignment = 1
+
+[node name="closeoption" type="Button" parent="Control"]
+visible = false
+layout_mode = 2
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 992.0
+offset_top = 96.0
+offset_right = -128.0
+offset_bottom = -520.0
+text = "X"
+
+[node name="PanelContainer" type="PanelContainer" parent="Control"]
+visible = false
+layout_mode = 0
+offset_left = 512.0
+offset_top = 128.0
+offset_right = 1024.0
+offset_bottom = 512.0
+
+[node name="Panel" type="Panel" parent="Control/PanelContainer"]
+layout_mode = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Control/PanelContainer/Panel"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -256.0
+offset_right = 256.0
+offset_bottom = 384.0
+grow_horizontal = 2
+text = "
+													Credits
+		Programmer : Abdi
+		Design : Abdi
+		Illustration : Abdi
+		Animator : Abdi
+		Character Design : Abdi
+		Writer : Abdi
+		Storyboard : Abdi
+
+		Music : Kevin Macleod ( incompetech.com ) 
+		
+		Made in Redot Engine 4.3.beta.3
+
+		Version 0.1.alpha"
+
+[connection signal="pressed" from="Control/start" to="." method="_on_start_pressed"]
+[connection signal="toggled" from="Control/option" to="." method="_on_option_toggled"]
+[connection signal="toggled" from="Control/about" to="." method="_on_about_toggled"]
+[connection signal="pressed" from="Control/exit" to="." method="_on_exit_pressed"]
+[connection signal="toggled" from="Control/optionbar/GRAPHICS/fullscreen" to="." method="_on_fullscreen_toggled"]
+[connection signal="item_selected" from="Control/optionbar/GRAPHICS/resolution" to="." method="_on_resolution_item_selected"]
+[connection signal="item_selected" from="Control/optionbar/GRAPHICS/viewport" to="." method="_on_viewport_item_selected"]
+[connection signal="value_changed" from="Control/optionbar/VOLUME/Mastervolume" to="." method="_on_mastervolume_value_changed"]
+[connection signal="toggled" from="Control/optionbar/VOLUME/Mastervolume/mutemaster" to="." method="_on_mutemaster_toggled"]
+[connection signal="value_changed" from="Control/optionbar/VOLUME/Musicvolume" to="." method="_on_musicvolume_value_changed"]
+[connection signal="toggled" from="Control/optionbar/VOLUME/Musicvolume/mutemusic" to="." method="_on_mutemusic_toggled"]
+[connection signal="value_changed" from="Control/optionbar/VOLUME/SFXvolume" to="." method="_on_sf_xvolume_value_changed"]
+[connection signal="toggled" from="Control/optionbar/VOLUME/SFXvolume/mutesfx" to="." method="_on_mutesfx_toggled"]
+[connection signal="item_selected" from="Control/optionbar/CONTROL/device" to="." method="_on_device_item_selected"]

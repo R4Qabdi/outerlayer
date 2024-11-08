@@ -1,0 +1,42 @@
+[gd_scene load_steps=7 format=3 uid="uid://cqgiwjrqhvwye"]
+
+[ext_resource type="Texture2D" uid="uid://c410vopmw7c3c" path="res://assets/main/weapons/bulletp1.png" id="1_hc183"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_771j1"]
+atlas = ExtResource("1_hc183")
+region = Rect2(0, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sb82x"]
+atlas = ExtResource("1_hc183")
+region = Rect2(8, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kdpy2"]
+atlas = ExtResource("1_hc183")
+region = Rect2(16, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5l3k2"]
+atlas = ExtResource("1_hc183")
+region = Rect2(24, 0, 8, 8)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_5mfuk"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_771j1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sb82x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kdpy2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5l3k2")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="peluru1" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_5mfuk")

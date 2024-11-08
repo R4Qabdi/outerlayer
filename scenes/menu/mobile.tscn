@@ -1,0 +1,67 @@
+[gd_scene load_steps=4 format=3 uid="uid://81lcug0emgwk"]
+
+[ext_resource type="Script" path="res://scenes/menu/mobile.gd" id="1_27pn3"]
+[ext_resource type="PackedScene" uid="uid://dmr0fcamx7t56" path="res://addons/virtual_joystick/virtual_joystick_scene.tscn" id="2_n4r46"]
+[ext_resource type="Theme" uid="uid://wq76alqodf5n" path="res://assets/UI/main theme.tres" id="3_lv6iy"]
+
+[node name="mobile" type="CanvasLayer"]
+script = ExtResource("1_27pn3")
+
+[node name="gerak" parent="." instance=ExtResource("2_n4r46")]
+offset_top = -336.0
+offset_right = 336.0
+offset_bottom = 0.0
+joystick_mode = 1
+action_left = "kiri"
+action_right = "kanan"
+action_up = "naik"
+action_down = "turun"
+
+[node name="serang" parent="." instance=ExtResource("2_n4r46")]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -336.0
+offset_top = -336.0
+offset_right = 0.0
+offset_bottom = 0.0
+grow_horizontal = 0
+joystick_mode = 1
+use_input_actions = false
+
+[node name="tombol" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme = ExtResource("3_lv6iy")
+
+[node name="E" type="Button" parent="tombol"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 1.0
+anchor_top = 0.444
+anchor_right = 1.0
+anchor_bottom = 0.444
+offset_left = 1144.0
+offset_top = 302.24
+offset_right = 1208.0
+offset_bottom = 366.24
+text = "E"
+
+[node name="auto" type="Button" parent="tombol"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 32.0
+anchor_top = 5.6
+anchor_right = 32.0
+anchor_bottom = 5.6
+offset_left = -96.0
+offset_top = -1.52588e-05
+offset_right = -32.0
+offset_bottom = 64.0
+toggle_mode = true
+text = "T"
+
+[connection signal="pressed" from="tombol/E" to="." method="_on_e_pressed"]
+[connection signal="toggled" from="tombol/auto" to="." method="_on_auto_toggled"]
