@@ -10,5 +10,8 @@ var settings ={
 	"masterm" = false,
 	"musicm" = false,
 	"sfxm" = false,
+	"joystick" = true,
+	"mouseaim" = false,
+	"debugmode" = false,
 	
 }

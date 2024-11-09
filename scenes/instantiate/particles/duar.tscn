@@ -1,0 +1,37 @@
+[gd_scene load_steps=3 format=3 uid="uid://cq6sstex4jp4j"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_2hilk"]
+particle_flag_disable_z = true
+angle_min = -720.0
+angle_max = 934.0
+initial_velocity_max = 18.87
+angular_velocity_min = -135.85
+angular_velocity_max = 27.17
+gravity = Vector3(0, 50, 0)
+linear_accel_min = 7.55
+linear_accel_max = 98.11
+radial_accel_min = -16.8
+radial_accel_max = 5.55
+tangential_accel_min = -55.8
+tangential_accel_max = 30.45
+scale_max = 4.0
+color = Color(1, 1, 0, 1)
+
+[sub_resource type="GDScript" id="GDScript_4uhfp"]
+script/source = "extends GPUParticles2D
+
+func _ready() -> void:
+	emitting=true
+
+func _on_finished() -> void:
+	queue_free()
+"
+
+[node name="duar" type="GPUParticles2D"]
+emitting = false
+process_material = SubResource("ParticleProcessMaterial_2hilk")
+lifetime = 0.2
+one_shot = true
+script = SubResource("GDScript_4uhfp")
+
+[connection signal="finished" from="." to="." method="_on_finished"]

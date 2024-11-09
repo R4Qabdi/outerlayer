@@ -1,0 +1,94 @@
+[gd_scene load_steps=10 format=3 uid="uid://bi7nvs4muafiu"]
+
+[ext_resource type="Texture2D" uid="uid://bp4jwmdmfashf" path="res://assets/main/animated/klinci.png" id="1_ksm6d"]
+
+[sub_resource type="GDScript" id="GDScript_qo85e"]
+script/source = "extends CharacterBody2D
+
+@onready var xp = preload(\"res://scenes/instantiate/character/xp.tscn\")
+
+@export var health = 10
+const SPEED = 1500
+func _ready() -> void:
+	$anim.play(\"default\")
+
+func _physics_process(delta: float) -> void:
+	var player = $\"../player/player\".position
+	velocity = position.direction_to(player) * delta * SPEED
+	if velocity.x > 0 :
+		$anim.flip_h = false
+	else :
+		$anim.flip_h = true
+		
+	move_and_slide()
+	
+func take_damage(amount):
+	health -= amount
+	if health <= 0:
+		mati()
+
+func mati():
+	var hah = xp.instantiate()
+	hah.global_position= global_position
+	get_parent().call_deferred(\"add_child\",hah)
+	queue_free()
+"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0d60j"]
+size = Vector2(24, 24)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_h1a8y"]
+size = Vector2(24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rprnc"]
+atlas = ExtResource("1_ksm6d")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7rplm"]
+atlas = ExtResource("1_ksm6d")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_37s1n"]
+atlas = ExtResource("1_ksm6d")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fc1uy"]
+atlas = ExtResource("1_ksm6d")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_hiqov"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rprnc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7rplm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_37s1n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fc1uy")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="mob" type="CharacterBody2D"]
+collision_layer = 0
+collision_mask = 0
+script = SubResource("GDScript_qo85e")
+
+[node name="tabrak" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_0d60j")
+
+[node name="hurt" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hurt"]
+shape = SubResource("RectangleShape2D_h1a8y")
+
+[node name="anim" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_hiqov")
+frame_progress = 0.681906

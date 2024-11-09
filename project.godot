@@ -24,7 +24,9 @@ global="*res://global.gd"
 [dialogic]
 
 directories/dch_directory={}
-directories/dtl_directory={}
+directories/dtl_directory={
+"bokep": "res://dialogic/timeline/bokep.dtl"
+}
 
 [display]
 

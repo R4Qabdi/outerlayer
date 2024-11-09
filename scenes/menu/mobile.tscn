@@ -4,10 +4,17 @@
 [ext_resource type="PackedScene" uid="uid://dmr0fcamx7t56" path="res://addons/virtual_joystick/virtual_joystick_scene.tscn" id="2_n4r46"]
 [ext_resource type="Theme" uid="uid://wq76alqodf5n" path="res://assets/UI/main theme.tres" id="3_lv6iy"]
 
-[node name="mobile" type="CanvasLayer"]
+[node name="mobile" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("1_27pn3")
 
 [node name="gerak" parent="." instance=ExtResource("2_n4r46")]
+layout_mode = 1
 offset_top = -336.0
 offset_right = 336.0
 offset_bottom = 0.0
@@ -18,6 +25,7 @@ action_up = "naik"
 action_down = "turun"
 
 [node name="serang" parent="." instance=ExtResource("2_n4r46")]
+layout_mode = 1
 anchors_preset = 3
 anchor_left = 1.0
 anchor_right = 1.0

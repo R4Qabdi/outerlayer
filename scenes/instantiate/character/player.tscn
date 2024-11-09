@@ -163,6 +163,8 @@ rotation = 1.5708
 shape = SubResource("CapsuleShape2D_tmrj0")
 
 [node name="interbox" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="interbox"]
 position = Vector2(0, 16)
@@ -180,8 +182,12 @@ shape = SubResource("RectangleShape2D_njy5q")
 position = Vector2(32, 0)
 
 [node name="att" type="Timer" parent="."]
+autostart = true
 
 [node name="hurt" type="Timer" parent="."]
+autostart = true
 
+[connection signal="serang" from="." to="senjata/slot" method="_on_player_serang"]
+[connection signal="body_entered" from="interbox" to="." method="_on_interbox_body_entered"]
 [connection signal="timeout" from="att" to="." method="_on_att_timeout"]
 [connection signal="timeout" from="hurt" to="." method="_on_hurt_timeout"]

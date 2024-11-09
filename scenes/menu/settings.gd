@@ -1,6 +1,6 @@
 extends CanvasLayer
 
-
+@onready var joy = preload("res://scenes/menu/mobile.tscn")
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	$settings.visible=false
@@ -90,9 +90,11 @@ func _on_mutesfx_toggled(toggled_on: bool) -> void:
 func _on_device_item_selected(index: int) -> void:
 	match index:
 		0:
-			pass
+			$settings/optionbar/CONTROL/mouseaim.button_pressed= false
+			$settings/optionbar/CONTROL/joystick.button_pressed= true
 		1:
-			pass
+			$settings/optionbar/CONTROL/mouseaim.button_pressed= true
+			$settings/optionbar/CONTROL/joystick.button_pressed= false
 
 func _on_menubutton_toggled(toggled_on: bool) -> void:
 	if toggled_on:
@@ -100,3 +102,22 @@ func _on_menubutton_toggled(toggled_on: bool) -> void:
 	else:
 		$settings.visible = false
 		
+
+func _on_mouseaim_toggled(toggled_on: bool) -> void:
+	global.settings["mouseaim"]=toggled_on
+
+
+func _on_debug_toggled(toggled_on: bool) -> void:
+	global.settings["debugmode"]=toggled_on
+
+
+func _on_joystick_toggled(toggled_on: bool) -> void:
+	var joyin = joy.instantiate()
+	if toggled_on:
+		if get_node_or_null("mobile"):
+			print("bluhh")
+		else :
+			get_node("anchor").add_child(joyin)
+	else :
+		$anchor/mobile.queue_free()
+	global.settings["joystick"]=toggled_on
