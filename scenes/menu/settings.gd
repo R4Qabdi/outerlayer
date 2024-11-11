@@ -56,7 +56,11 @@ func _on_viewport_item_selected(index: int) -> void:
 
 #volume
 func _on_mastervolume_value_changed(value: float) -> void:
-	AudioServer.set_bus_volume_db(0, value)
+	if value == -6:
+		$settings/optionbar/VOLUME/SFXvolume/mutemaster.button_pressed=true
+	else:
+		$settings/optionbar/VOLUME/SFXvolume/mutemaster.button_pressed=false
+		AudioServer.set_bus_volume_db(0, value)
 
 func _on_mutemaster_toggled(toggled_on: bool) -> void:
 	if toggled_on:
@@ -66,7 +70,11 @@ func _on_mutemaster_toggled(toggled_on: bool) -> void:
 
 
 func _on_musicvolume_value_changed(value: float) -> void:
-	AudioServer.set_bus_volume_db(1, value)
+	if value == -6:
+		$settings/optionbar/VOLUME/SFXvolume/mute.button_pressed=true
+	else:
+		$settings/optionbar/VOLUME/SFXvolume/mutemusic.button_pressed=false
+		AudioServer.set_bus_volume_db(1, value)
 
 
 func _on_mutemusic_toggled(toggled_on: bool) -> void:
@@ -77,7 +85,11 @@ func _on_mutemusic_toggled(toggled_on: bool) -> void:
 
 
 func _on_sf_xvolume_value_changed(value: float) -> void:
-	AudioServer.set_bus_volume_db(2, value)
+	if value == -6:
+		$settings/optionbar/VOLUME/SFXvolume/mutesfx.button_pressed=true
+	else:
+		$settings/optionbar/VOLUME/SFXvolume/mutesfx.button_pressed=false
+		AudioServer.set_bus_volume_db(2, value)
 
 
 func _on_mutesfx_toggled(toggled_on: bool) -> void:
@@ -99,8 +111,10 @@ func _on_device_item_selected(index: int) -> void:
 func _on_menubutton_toggled(toggled_on: bool) -> void:
 	if toggled_on:
 		$settings.visible = true
+		get_tree().paused = true
 	else:
 		$settings.visible = false
+		get_tree().paused = false
 		
 
 func _on_mouseaim_toggled(toggled_on: bool) -> void:

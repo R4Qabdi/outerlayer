@@ -1,0 +1,66 @@
+[gd_scene load_steps=3 format=3 uid="uid://b0k8jsikywgg7"]
+
+[ext_resource type="Theme" uid="uid://wq76alqodf5n" path="res://assets/UI/main theme.tres" id="1_2714j"]
+[ext_resource type="Script" path="res://scenes/menu/uivictory.gd" id="1_a4l8r"]
+
+[node name="uivictory" type="CanvasLayer"]
+process_mode = 3
+script = ExtResource("1_a4l8r")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_2714j")
+metadata/_edit_lock_ = true
+
+[node name="Panel" type="Panel" parent="Control"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -384.0
+offset_top = 128.0
+offset_right = 384.0
+offset_bottom = 592.0
+grow_horizontal = 2
+
+[node name="Label" type="Label" parent="Control/Panel"]
+layout_mode = 0
+offset_left = 256.0
+offset_top = 96.0
+offset_right = 512.0
+offset_bottom = 160.0
+theme_override_font_sizes/font_size = 32
+text = "YOU ESCAPED!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="next" type="Button" parent="Control/Panel"]
+layout_mode = 0
+offset_left = 432.0
+offset_top = 304.0
+offset_right = 560.0
+offset_bottom = 336.0
+text = "next level"
+
+[node name="main" type="Button" parent="Control/Panel"]
+layout_mode = 0
+offset_left = 192.0
+offset_top = 304.0
+offset_right = 320.0
+offset_bottom = 336.0
+text = "main menu"
+
+[node name="Label" type="Label" parent="."]
+offset_left = 570.556
+offset_top = 328.966
+offset_right = 610.556
+offset_bottom = 351.966
+text = "score : "
+
+[connection signal="pressed" from="Control/Panel/next" to="." method="_on_next_pressed"]
+[connection signal="pressed" from="Control/Panel/main" to="." method="_on_main_pressed"]

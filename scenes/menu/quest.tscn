@@ -1,0 +1,34 @@
+[gd_scene load_steps=2 format=3 uid="uid://bld0pw86ceywf"]
+
+[ext_resource type="Theme" uid="uid://wq76alqodf5n" path="res://assets/UI/main theme.tres" id="1_3ufsq"]
+
+[node name="quest" type="CanvasLayer"]
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+size_flags_horizontal = 4
+theme = ExtResource("1_3ufsq")
+
+[node name="Panel" type="Panel" parent="Control"]
+layout_mode = 0
+offset_top = 32.0
+offset_right = 256.0
+offset_bottom = 128.0
+
+[node name="Label" type="Label" parent="Control/Panel"]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 32.0
+offset_right = 240.0
+offset_bottom = 96.0
+text = "survive for 60  seconds
+find escape
+"
+
+[node name="Label2" type="Label" parent="Control/Panel"]
+layout_mode = 0
+offset_left = 16.0
+offset_right = 63.0
+offset_bottom = 23.0
+text = "Quest"

@@ -1,0 +1,117 @@
+[gd_scene load_steps=4 format=3 uid="uid://vrg6lrbno4r4"]
+
+[ext_resource type="Texture2D" uid="uid://54yth6i2lc1b" path="res://assets/main/icons/iconweez.png" id="1_wghwd"]
+[ext_resource type="Script" path="res://scenes/menu/coming_soon.gd" id="1_xt0be"]
+[ext_resource type="Theme" uid="uid://wq76alqodf5n" path="res://assets/UI/main theme.tres" id="2_j0bqj"]
+
+[node name="coming soon" type="CanvasLayer"]
+script = ExtResource("1_xt0be")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_wghwd")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_j0bqj")
+
+[node name="Panel" type="Panel" parent="Control"]
+layout_mode = 0
+offset_left = 256.0
+offset_top = 128.0
+offset_right = 1024.0
+offset_bottom = 592.0
+
+[node name="Label" type="Label" parent="Control/Panel"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -272.0
+offset_top = 48.0
+offset_right = 272.0
+offset_bottom = 255.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 48
+text = "To be continued...
+
+THANKS FOR PLAYING!
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button" type="Button" parent="Control/Panel"]
+layout_mode = 0
+offset_left = 128.0
+offset_top = 336.0
+offset_right = 304.0
+offset_bottom = 384.0
+text = "back to main menu"
+
+[node name="Button2" type="Button" parent="Control/Panel"]
+layout_mode = 0
+offset_left = 464.0
+offset_top = 336.0
+offset_right = 640.0
+offset_bottom = 384.0
+text = "Show credits"
+
+[node name="PanelContainer" type="PanelContainer" parent="Control/Panel"]
+visible = false
+offset_left = 128.0
+offset_top = 32.0
+offset_right = 640.0
+offset_bottom = 416.0
+
+[node name="Panel" type="Panel" parent="Control/Panel/PanelContainer"]
+layout_mode = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Control/Panel/PanelContainer/Panel"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -256.0
+offset_right = 256.0
+offset_bottom = 368.0
+grow_horizontal = 2
+text = "
+													Credits
+		Programmer : Abdi
+		Design : Abdi
+		Illustration : Abdi
+		Animator : Abdi
+		Character Design : Abdi
+		Writer : Abdi
+		Storyboard : Abdi
+
+		Music : Kevin Macleod ( incompetech.com ) 
+		
+		Made in Redot Engine 4.3.beta.3
+
+		Version 0.1.alpha
+		
+		Used Add-ons : 
+		Dialogic - Jowan Spooner, Emi, Cake, other
+		Gaea - BenjaTK
+		Phantom Camera - Marcus Skov
+		Virtual Joystick - Marco Fazio"
+
+[node name="x" type="Button" parent="Control/Panel/PanelContainer/Panel"]
+layout_mode = 0
+offset_right = 32.0
+offset_bottom = 32.0
+text = "X"
+
+[connection signal="pressed" from="Control/Panel/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="Control/Panel/Button2" to="." method="_on_button_2_pressed"]
+[connection signal="pressed" from="Control/Panel/PanelContainer/Panel/x" to="." method="_on_x_pressed"]

@@ -10,10 +10,14 @@ config_version=5
 
 [application]
 
-config/name="outer layer"
+config/name="outermension"
+config/description="she's the portal maintainer
+"
+config/version="0.1"
 run/main_scene="res://scenes/menu/mainmenu.tscn"
 config/features=PackedStringArray("4.3", "Mobile")
-config/icon="res://icon.svg"
+boot_splash/image="res://assets/main/icons/logo.png"
+config/icon="res://assets/main/icons/iconmal.png"
 
 [autoload]
 
@@ -27,6 +31,29 @@ directories/dch_directory={}
 directories/dtl_directory={
 "bokep": "res://dialogic/timeline/bokep.dtl"
 }
+layout/style_list=["res://dialogic/style/main.tres"]
+layout/default_style="res://dialogic/style/main.tres"
+glossary/default_case_sensitive=true
+variables={}
+extensions_folder="res://addons/dialogic_additions"
+text/letter_speed=0.01
+text/initial_text_reveal_skippable=true
+text/text_reveal_skip_delay=0.1
+text/advance_delay=0.1
+text/autoadvance_per_character_delay=0.1
+text/autoadvance_ignored_characters_enabled=true
+save/autosave_delay=60.0
+save/encryption_on_exports_only=true
+animations/join_default_length=0.5
+animations/join_default_wait=true
+animations/leave_default_length=0.5
+animations/leave_default_wait=true
+animations/cross_fade_default_length=0.5
+choices/autofocus_first=true
+choices/delay=0.2
+choices/reveal_delay=0
+choices/reveal_by_input=false
+text/autopauses={}
 
 [display]
 
@@ -107,3 +134,4 @@ common/physics_interpolation=true
 
 textures/canvas_textures/default_texture_filter=0
 renderer/rendering_method="mobile"
+textures/vram_compression/import_etc2_astc=true

@@ -199,6 +199,8 @@ offset_left = -96.0
 offset_top = 47.941
 offset_right = 80.0
 offset_bottom = 79.941
+min_value = -6.0
+max_value = 6.0
 
 [node name="mutemaster" type="TextureButton" parent="settings/optionbar/VOLUME/Mastervolume"]
 layout_mode = 0
@@ -228,6 +230,8 @@ offset_top = 129.0
 offset_right = 80.0
 offset_bottom = 161.0
 grow_horizontal = 2
+min_value = -6.0
+max_value = 6.0
 
 [node name="mutemusic" type="TextureButton" parent="settings/optionbar/VOLUME/Musicvolume"]
 layout_mode = 0
@@ -257,6 +261,8 @@ offset_top = 209.0
 offset_right = 80.0
 offset_bottom = 241.0
 grow_horizontal = 2
+min_value = -6.0
+max_value = 6.0
 
 [node name="mutesfx" type="TextureButton" parent="settings/optionbar/VOLUME/SFXvolume"]
 layout_mode = 0

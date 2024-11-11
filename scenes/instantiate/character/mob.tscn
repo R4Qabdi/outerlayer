@@ -32,6 +32,14 @@ func mati():
 	hah.global_position= global_position
 	get_parent().call_deferred(\"add_child\",hah)
 	queue_free()
+
+
+func _on_hurt_body_entered(body: Node2D) -> void:
+	pass
+
+
+func _on_hurt_body_exited(body: Node2D) -> void:
+	pass # Replace with function body.
 "
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0d60j"]
@@ -77,14 +85,16 @@ animations = [{
 }]
 
 [node name="mob" type="CharacterBody2D"]
-collision_layer = 0
-collision_mask = 0
+collision_layer = 168
+collision_mask = 168
 script = SubResource("GDScript_qo85e")
 
 [node name="tabrak" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_0d60j")
 
 [node name="hurt" type="Area2D" parent="."]
+collision_layer = 40
+collision_mask = 40
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="hurt"]
 shape = SubResource("RectangleShape2D_h1a8y")
@@ -92,3 +102,6 @@ shape = SubResource("RectangleShape2D_h1a8y")
 [node name="anim" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_hiqov")
 frame_progress = 0.681906
+
+[connection signal="body_entered" from="hurt" to="." method="_on_hurt_body_entered"]
+[connection signal="body_exited" from="hurt" to="." method="_on_hurt_body_exited"]

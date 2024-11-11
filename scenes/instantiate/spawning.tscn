@@ -1,0 +1,74 @@
+[gd_scene load_steps=12 format=3 uid="uid://dgayl1fthineu"]
+
+[ext_resource type="Texture2D" uid="uid://uocpa51skt6y" path="res://assets/main/animated/implode.png" id="1_lpj32"]
+[ext_resource type="Script" path="res://spawning.gd" id="2_uk688"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_478yt"]
+atlas = ExtResource("1_lpj32")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mbi6d"]
+atlas = ExtResource("1_lpj32")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8npo4"]
+atlas = ExtResource("1_lpj32")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gfaae"]
+atlas = ExtResource("1_lpj32")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8tfhm"]
+atlas = ExtResource("1_lpj32")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_scw5l"]
+atlas = ExtResource("1_lpj32")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jj6vj"]
+atlas = ExtResource("1_lpj32")
+region = Rect2(192, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w7l01"]
+atlas = ExtResource("1_lpj32")
+region = Rect2(224, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4arhd"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_478yt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mbi6d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8npo4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gfaae")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8tfhm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_scw5l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jj6vj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w7l01")
+}],
+"loop": false,
+"name": &"default",
+"speed": 12.0
+}]
+
+[node name="spawning" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_4arhd")
+script = ExtResource("2_uk688")
+
+[connection signal="animation_finished" from="." to="." method="_on_animation_finished"]

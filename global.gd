@@ -13,5 +13,5 @@ var settings ={
 	"joystick" = true,
 	"mouseaim" = false,
 	"debugmode" = false,
-	
 }
+var score = 0

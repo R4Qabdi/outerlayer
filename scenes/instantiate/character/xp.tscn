@@ -1,51 +1,40 @@
-[gd_scene load_steps=9 format=3 uid="uid://cxxyvwj1rlhys"]
+[gd_scene load_steps=10 format=3 uid="uid://cxxyvwj1rlhys"]
 
 [ext_resource type="Texture2D" uid="uid://b1rps7a5bg413" path="res://assets/main/weapons/exp.png" id="1_l5e8q"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_5ah2t"]
-atlas = ExtResource("1_l5e8q")
-region = Rect2(0, 0, 8, 8)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_6nb68"]
-atlas = ExtResource("1_l5e8q")
-region = Rect2(8, 0, 8, 8)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_6g2kc"]
-atlas = ExtResource("1_l5e8q")
-region = Rect2(16, 0, 8, 8)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_2kems"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_5ah2t")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_6nb68")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_6g2kc")
-}],
-"loop": true,
-"name": &"default",
-"speed": 5.0
-}]
-
 [sub_resource type="GDScript" id="GDScript_6qwqt"]
-script/source = "extends AnimatedSprite2D
+script/source = "extends CharacterBody2D
+var ada : bool
+const SPEED = 1000
+@export var jumlah = 1
 
 func _ready() -> void:
-	play(\"defaul\")
+	$anim.play(\"default\")
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	pass
-
+	var player = $\"../player/player\".position
+	if ada:
+		global_position += position.direction_to(player) * SPEED * delta
 
 func _on_timer_timeout() -> void:
 	queue_free()
+
+func _on_detect_body_entered(body: Node2D) -> void:
+	ada=true
+
+func _on_take_body_entered(body: Node2D) -> void:
+	if body.has_method(\"take_exp\"):
+		body.take_exp(jumlah)
+		body.take_kill()
+		queue_free()
+
+
+func _on_take_body_exited(body: Node2D) -> void:
+	ada=false
 "
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_tc6qx"]
+radius = 4.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_to11n"]
 size = Vector2(128, 128)
@@ -53,9 +42,44 @@ size = Vector2(128, 128)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ljp75"]
 size = Vector2(8, 8)
 
-[node name="xp" type="AnimatedSprite2D"]
-sprite_frames = SubResource("SpriteFrames_2kems")
+[sub_resource type="AtlasTexture" id="AtlasTexture_ox7rh"]
+atlas = ExtResource("1_l5e8q")
+region = Rect2(0, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wf2co"]
+atlas = ExtResource("1_l5e8q")
+region = Rect2(8, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t7eyu"]
+atlas = ExtResource("1_l5e8q")
+region = Rect2(16, 0, 8, 8)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_xngok"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ox7rh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wf2co")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t7eyu")
+}],
+"loop": true,
+"name": &"default",
+"speed": 4.0
+}]
+
+[node name="xp" type="CharacterBody2D"]
+collision_layer = 0
+collision_mask = 0
 script = SubResource("GDScript_6qwqt")
+
+[node name="tabrak" type="CollisionShape2D" parent="."]
+light_mask = 33
+visibility_layer = 33
+shape = SubResource("CircleShape2D_tc6qx")
 
 [node name="detect" type="Area2D" parent="."]
 
@@ -63,6 +87,8 @@ script = SubResource("GDScript_6qwqt")
 shape = SubResource("RectangleShape2D_to11n")
 
 [node name="take" type="Area2D" parent="."]
+collision_layer = 16
+collision_mask = 16
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="take"]
 shape = SubResource("RectangleShape2D_ljp75")
@@ -71,4 +97,9 @@ shape = SubResource("RectangleShape2D_ljp75")
 wait_time = 20.0
 autostart = true
 
+[node name="anim" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_xngok")
+
+[connection signal="body_entered" from="detect" to="." method="_on_detect_body_entered"]
+[connection signal="body_entered" from="take" to="." method="_on_take_body_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

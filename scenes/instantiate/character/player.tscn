@@ -141,7 +141,7 @@ animations = [{
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_tmrj0"]
 radius = 6.0
-height = 12.0
+height = 16.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_recg5"]
 size = Vector2(16, 16)
@@ -150,6 +150,8 @@ size = Vector2(16, 16)
 size = Vector2(20, 46)
 
 [node name="player" type="CharacterBody2D"]
+collision_layer = 19
+collision_mask = 19
 script = ExtResource("1_pfirb")
 
 [node name="anim" type="AnimatedSprite2D" parent="."]
@@ -158,8 +160,7 @@ animation = &"turun"
 metadata/_edit_lock_ = true
 
 [node name="tabrak" type="CollisionShape2D" parent="."]
-position = Vector2(0, 16)
-rotation = 1.5708
+position = Vector2(0, 14)
 shape = SubResource("CapsuleShape2D_tmrj0")
 
 [node name="interbox" type="Area2D" parent="."]
@@ -169,12 +170,25 @@ collision_mask = 2
 [node name="CollisionShape2D" type="CollisionShape2D" parent="interbox"]
 position = Vector2(0, 16)
 shape = SubResource("RectangleShape2D_recg5")
+metadata/_edit_lock_ = true
 
 [node name="hurtbox" type="Area2D" parent="."]
+collision_layer = 32
+collision_mask = 32
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="hurtbox"]
 position = Vector2(0, -1)
 shape = SubResource("RectangleShape2D_njy5q")
+metadata/_edit_lock_ = true
+
+[node name="takebox" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="takebox"]
+position = Vector2(0, -1)
+shape = SubResource("RectangleShape2D_njy5q")
+metadata/_edit_lock_ = true
 
 [node name="senjata" type="Node2D" parent="."]
 
@@ -182,7 +196,6 @@ shape = SubResource("RectangleShape2D_njy5q")
 position = Vector2(32, 0)
 
 [node name="att" type="Timer" parent="."]
-autostart = true
 
 [node name="hurt" type="Timer" parent="."]
 autostart = true

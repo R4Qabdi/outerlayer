@@ -3,6 +3,7 @@ extends CanvasLayer
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	get_tree().paused= false
 	$Control/optionbar.visible = false
 	$Control/PanelContainer.visible = false
 
@@ -56,7 +57,12 @@ func _on_viewport_item_selected(index: int) -> void:
 
 #volume
 func _on_mastervolume_value_changed(value: float) -> void:
-	AudioServer.set_bus_volume_db(0, value)
+	
+	if value == -6 : 
+		$Control/optionbar/VOLUME/Mastervolume/mutemaster.button_pressed=true
+	else:
+		$Control/optionbar/VOLUME/Mastervolume/mutemaster.button_pressed=false
+		AudioServer.set_bus_volume_db(0, value)
 
 func _on_mutemaster_toggled(toggled_on: bool) -> void:
 	if toggled_on:
@@ -66,7 +72,11 @@ func _on_mutemaster_toggled(toggled_on: bool) -> void:
 
 
 func _on_musicvolume_value_changed(value: float) -> void:
-	AudioServer.set_bus_volume_db(1, value)
+	if value == -6 : 
+		$Control/optionbar/VOLUME/Musicvolume/mutemusic.button_pressed=true
+	else:
+		$Control/optionbar/VOLUME/Musicvolume/mutemusic.button_pressed=false
+		AudioServer.set_bus_volume_db(1, value)
 
 
 func _on_mutemusic_toggled(toggled_on: bool) -> void:
@@ -77,7 +87,11 @@ func _on_mutemusic_toggled(toggled_on: bool) -> void:
 
 
 func _on_sf_xvolume_value_changed(value: float) -> void:
-	AudioServer.set_bus_volume_db(2, value)
+	if value == -6 : 
+		$Control/optionbar/VOLUME/SFXvolume/mutesfx.button_pressed=true
+	else:
+		$Control/optionbar/VOLUME/SFXvolume/mutesfx.button_pressed=false
+		AudioServer.set_bus_volume_db(2, value)
 
 
 func _on_mutesfx_toggled(toggled_on: bool) -> void:

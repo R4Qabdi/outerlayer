@@ -1,0 +1,55 @@
+[gd_scene load_steps=3 format=3 uid="uid://csby5amlb565h"]
+
+[ext_resource type="Theme" uid="uid://wq76alqodf5n" path="res://assets/UI/main theme.tres" id="1_ouf4g"]
+[ext_resource type="Script" path="res://scenes/menu/gameover.gd" id="1_xtg0c"]
+
+[node name="gameover" type="CanvasLayer"]
+process_mode = 3
+script = ExtResource("1_xtg0c")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_ouf4g")
+
+[node name="Panel" type="Panel" parent="Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -384.0
+offset_top = 128.0
+offset_right = 384.0
+offset_bottom = 592.0
+
+[node name="tryagain" type="Button" parent="Control/Panel"]
+layout_mode = 0
+offset_left = 448.0
+offset_top = 256.0
+offset_right = 576.0
+offset_bottom = 288.0
+text = "try again"
+
+[node name="main" type="Button" parent="Control/Panel"]
+layout_mode = 0
+offset_left = 192.0
+offset_top = 256.0
+offset_right = 320.0
+offset_bottom = 288.0
+text = "main menu"
+
+[node name="Label" type="Label" parent="Control/Panel"]
+layout_mode = 0
+offset_left = 320.0
+offset_top = 96.0
+offset_right = 450.0
+offset_bottom = 141.0
+theme_override_font_sizes/font_size = 32
+text = "You lose"
+
+[connection signal="pressed" from="Control/Panel/tryagain" to="." method="_on_tryagain_pressed"]
+[connection signal="pressed" from="Control/Panel/main" to="." method="_on_main_pressed"]
