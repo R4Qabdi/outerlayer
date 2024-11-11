@@ -5,6 +5,7 @@
 [ext_resource type="Theme" uid="uid://wq76alqodf5n" path="res://assets/UI/main theme.tres" id="2_j0bqj"]
 
 [node name="coming soon" type="CanvasLayer"]
+process_mode = 3
 script = ExtResource("1_xt0be")
 
 [node name="TextureRect" type="TextureRect" parent="."]
@@ -67,6 +68,7 @@ text = "Show credits"
 
 [node name="PanelContainer" type="PanelContainer" parent="Control/Panel"]
 visible = false
+layout_mode = 0
 offset_left = 128.0
 offset_top = 32.0
 offset_right = 640.0
